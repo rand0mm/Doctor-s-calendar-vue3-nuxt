@@ -1,0 +1,12 @@
+@import 'mixin.scss';
+
+.content {
+    margin-bottom: 150px;
+    &__top {
+        margin-bottom: $size5;
+    }
+    &__title {
+        @include captionFont;
+        margin-bottom: $size5;
+    }
+}

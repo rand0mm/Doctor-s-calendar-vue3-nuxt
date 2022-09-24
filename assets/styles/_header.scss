@@ -1,0 +1,25 @@
+
+
+
+.header {
+    margin-bottom: $size7;
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 380px 1fr 300px 25px;
+        grid-column-gap: 40px;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-top:$size4;
+        padding-bottom: $size4;
+        border-bottom: 1px solid $secondTextColor;
+    }
+    &__info {
+        font-size: $size4;
+        text-transform: uppercase;
+    }
+    &__logo {
+        display: block;
+        width: 190px;
+        height: 33px;
+    }
+}
