@@ -39,6 +39,7 @@ export const changeDate = (value, change, plus) => {
 
 export const formatDate = (str, toId) => {
     if(toId) {
+        console.log(str)
         let id = str.split('-').reverse().join('')
         return Number(id)
     }

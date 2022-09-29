@@ -3,7 +3,7 @@
     <body>
       <header class="header">
         <div class="header__wrapper">
-          <NuxtLink class="header__logo" to="/">
+          <NuxtLink class="header__logo" to="/Doctor-s-calendar-vue3-nuxt/">
             <img
               src="@/assets/img/logo2.svg"
               alt="Логотип"

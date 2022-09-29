@@ -1,8 +1,5 @@
 export default defineNuxtConfig({
   target: 'static',
-  router: {
-    base: '/Doctor-s-calendar-vue3-nuxt/'
-  },
   // auto import components
   components: true,
   // server side rendering mode

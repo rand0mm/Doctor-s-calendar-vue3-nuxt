@@ -13,9 +13,39 @@ const employerName = ref('');
 const employesStore = useEmployesStore();
 
 // for render
-const curWeek = ref(0);
-const first = computed(() => formatDate(currentMonth[curWeek.value][0], true));
-const currentMonth = getCurrentMonth();
+const curWeek = computed({
+  get() {
+    return employesStore.getWeek || 0;
+  },
+  set(value) {
+    employesStore.curWeek = value;
+  },
+});
+const curDay = computed({
+  get() {
+    return employesStore.getDay || 0;
+  },
+  set(value) {
+    employesStore.curDay = value;
+  },
+});
+const currentMonth = computed({
+  get() {
+    return employesStore.getMonth || getCurrentMonth();
+  },
+  set(value) {
+    employesStore.curMonth = value;
+  },
+});
+// id первого дня текущей недели
+const first = computed({
+  get() {
+    return employesStore.getFirst || formatDate(currentMonth.value[curWeek.value][0], true);
+  },
+  set(value) {
+    employesStore.curFirst = value;
+  },
+});
 const currentEmployRender = computed(() => {
   let newWeek = employer.value
     ? employer.value.data.filter(
@@ -210,15 +240,20 @@ const isCover = (hour, data) => {
   return data.match(/.{1,2}/g).includes(hoursFormat(hour - 1));
 };
 
+const changeWeek = (newValue) => {
+  curWeek.value = newValue;
+  first.value = formatDate(currentMonth.value[curWeek.value][0], true)
+}
+
 watch([employerlData,curWeek], () => {
   let data = employerlData.value.employes;
   employer.value = data ? data.find((i) => i.id == route.params.id) : {};
   employerName.value = employer.value ? employer.value.name : '';
   console.log("Данные по текущему работнику из хранилища", employer.value);
 });
-onMounted(() => {
-  employesStore.getLocal();
-});
+employesStore.getLocal();
+
+
 </script>
         
         
@@ -226,7 +261,7 @@ onMounted(() => {
   <main class="content container">
     <div class="content__top">
       <h2 class="content__title">
-        <nuxt-link class="content__link" to="/">
+        <nuxt-link class="content__link" to="/Doctor-s-calendar-vue3-nuxt/">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M14 16V5L13 6V15H1V3H10L11 2H0V16H14Z" fill="currentColor"/>
             <path d="M16 0H11L12.8 1.8L6 8.6L7.4 10L14.2 3.2L16 5V0Z" fill="currentColor"/>
@@ -241,7 +276,7 @@ onMounted(() => {
             :class="{ 'tab-link__item--active': curWeek === index }"
             v-for="(week, index) in currentMonth"
             :key="index"
-            @click.prevent="curWeek = index"
+            @click.prevent="changeWeek(index)"
           >
             {{ formatDate(week[0]) }}-{{ formatDate(week[6]) }}
           </li>
