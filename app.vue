@@ -5,7 +5,7 @@
         <div class="header__wrapper">
           <NuxtLink class="header__logo" to="/">
             <img
-              src="@/assets/img/logo 2.svg"
+              src="@/assets/img/logo2.svg"
               alt="Логотип"
               width="121"
               height="33"
