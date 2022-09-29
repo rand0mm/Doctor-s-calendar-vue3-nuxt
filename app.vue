@@ -11,7 +11,7 @@
               height="33"
             />
           </NuxtLink>
-          <h1 class="header__info">Календарь врача</h1>
+          <h1 class="header__info">Календарь&nbsp;врача</h1>
         </div>
       </header>
       <NuxtPage />
@@ -21,4 +21,8 @@
 </template>
 
 <script setup>
+import { useEmployesStore } from "@/store/employes";
+
+const employesStore = useEmployesStore();
+employesStore.fetchData();
 </script>

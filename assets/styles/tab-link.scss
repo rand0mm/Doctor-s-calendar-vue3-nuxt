@@ -9,7 +9,7 @@
     }
     &__item {
         margin-right: $size5;
-        border-bottom: 1px dashed $thirdTextColor;
+        border-bottom: 1px dashed currentColor;
         font-weight: 500;
         font-size: $size3;
         line-height: 100%;

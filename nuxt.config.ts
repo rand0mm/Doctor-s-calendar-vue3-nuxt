@@ -1,4 +1,3 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 // auto import components
   components: true,
@@ -39,7 +38,11 @@ export default defineNuxtConfig({
     },
     css: ["@/assets/styles/main.scss"],
     modules: [
-      '@nuxtjs/style-resources'
+      '@nuxtjs/style-resources',
+      '@pinia/nuxt'
+    ],
+    buildModules: [
+      '@pinia/nuxt',
     ],
     vite: {
       css: {

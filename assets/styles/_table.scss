@@ -121,8 +121,9 @@
     }
 
     &__hour {
+        position: relative;
         display: flex;
-        height: $size6;
+        height: 40px;
         width: calc(100% / 24);
         font-weight: 500;
         font-size: $size2;
@@ -131,31 +132,63 @@
         justify-content: center;
         color: $fourthTextColor;
         border: $border;
-        transition: background-color .3s ease, color .3s ease;
+        cursor: pointer;
+        transition: background-color .3s ease, color .3s ease, opacity .3s ease;
 
         &:not(:first-child) {
             border-left: 0;
-        }
-
-        &--chosen {
-            background-color: $primaryColor;
-            color: $secondTextColor;
         }
 
         &--main {
             border: $border2;
         }
 
-        &:hover,
+        &:hover {
+            background-color: $primaryColor-4;
+            color: $textColor;
+        }
         &--cover {
             background-color: $primaryColor-2;
             color: $secondTextColor;
+        }
+        &--chosen {
+            background-color: $primaryColor;
+            color: $secondTextColor;
+        }
+        &--cover,
+        &--chosen {
+           &:hover {
+            background-color: $primaryColor-3;
+            opacity: 0.5;
+           }
+        }
+
+        &--empty {
+            color:#FFFFFF;
+            background-color: #E75454;
+            &:hover {
+                background-color: #E75454;
+                opacity: 0.5;
+            }
+        }
+        &--fill {
+            &::after {
+                content: '';
+                position: absolute;
+                height: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 125%;
+                border-radius: 20px;
+                background-color: $primaryColor-5;
+                z-index: 11;
+            }
         }
     }
 
     &__name {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: center;
         z-index: 1;
         width: 200px;
@@ -165,6 +198,5 @@
         color: $textColor;
         border: $border2;
         border-right: 0;
-        padding-bottom: 6px;
     }
 }

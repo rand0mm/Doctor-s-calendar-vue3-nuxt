@@ -25,7 +25,10 @@
     "sass-loader": "^13.0.2"
   },
   "dependencies": {
+    "@nuxtjs/composition-api": "^0.33.1",
+    "@pinia/nuxt": "^0.4.2",
     "cookie-universal-nuxt": "^2.2.2",
+    "pinia": "^2.0.22",
     "vue": "^3.2.39"
   }
 }
