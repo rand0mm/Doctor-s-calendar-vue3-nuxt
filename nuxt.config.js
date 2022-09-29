@@ -1,5 +1,4 @@
 export default defineNuxtConfig({
-  mode: 'spa',
   target: 'static',
   router: {
     base: '/Doctor-s-calendar-vue3-nuxt/'
